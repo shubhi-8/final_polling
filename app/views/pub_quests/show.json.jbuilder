@@ -1,0 +1,1 @@
+json.partial! "pub_quests/pub_quest", pub_quest: @pub_quest

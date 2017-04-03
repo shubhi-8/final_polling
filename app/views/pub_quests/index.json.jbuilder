@@ -1,0 +1,1 @@
+json.array! @pub_quests, partial: 'pub_quests/pub_quest', as: :pub_quest

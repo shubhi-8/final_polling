@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @pub_quest.name %>
+</p>
+<%= form_tag votes_path, method: :post, remote: true, id: 'voting_form' do %>
+<%= hidden_field_tag 'pub_quest[id]', @pub_quest.id %>
+<ol>
+     <% @pub_quest.choices.each do |choice| %>
+    <li>  <%= radio_button_tag 'choice[id]', choice.id %>  <%= choice.name %> </li>
+     <% end %>
+</ol>
+<% if current_user.voted_for?(@pub_quest) %>
+
+<p>You have already voted!</p>
+
+<% else %>
+<%= submit_tag 'Vote' %>
+<% end%>
+<%end%>
+<%= link_to 'Edit', edit_pub_quest_path(@pub_quest) %> 
+<%= link_to 'Back', pub_quests_path %>
